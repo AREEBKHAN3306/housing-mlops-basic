@@ -1,0 +1,20 @@
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+import pickle
+
+# Load the dataset
+df = pd.read_csv("Housing.csv")
+
+# Features and target
+X = df[["Area", "Bedrooms", "Bathrooms"]]
+y = df["Price"]
+
+# Train the model
+model = LinearRegression()
+model.fit(X, y)
+
+# Save the model
+with open("model.pkl", "wb") as f:
+    pickle.dump(model, f)
+
+print("Model trained and saved as model.pkl")
